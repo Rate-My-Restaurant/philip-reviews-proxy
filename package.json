@@ -11,7 +11,9 @@
   "scripts": {
     "test": "jest",
     "start-main": "nodemon ./server/index.js",
-    "start-reviews": "nodemon ./reviews/server/index.js"
+    "start-reviews": "nodemon ./reviews/server/index.js",
+    "start-reservations": "nodemon ./reservations/server/index.js",
+    "start-carousel": "nodemon ./carousel/server/start.js"
   },
   "dependencies": {
     "axios": "^0.19.2",

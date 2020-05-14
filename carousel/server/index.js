@@ -19,6 +19,30 @@ app.use((req, res, next) => {
 
 app.get('/images', getImages);
 
+// app.get('/images', (req, res) => {
+//   let dummydata = [{
+//         "imageId": 1,
+//         "imageTitle": "testImage1",
+//         "itemImageUrl": "https://fec-yelp-images.s3-us-west-1.amazonaws.com/food1.jpg",
+//         "imageCategory": "food",
+//         "imageDescription": "yummy dish",
+//         "imageUploadDate": "2020-05-11T07:00:00.000Z",
+//         "userId": 1,
+//         "restaurantId": 2
+//     },
+//     {
+//         "imageId": 2,
+//         "imageTitle": "testImage2",
+//         "itemImageUrl": "https://fec-yelp-images.s3-us-west-1.amazonaws.com/food2.jpg",
+//         "imageCategory": "decor",
+//         "imageDescription": "nice environment",
+//         "imageUploadDate": "2020-05-11T07:00:00.000Z",
+//         "userId": 1,
+//         "restaurantId": 2
+//     }]
+//   res.send(dummydata);
+// })
+
 app.get('/users', getUsers);
 
 module.exports = app;

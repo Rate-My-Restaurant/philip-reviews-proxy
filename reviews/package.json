@@ -14,7 +14,7 @@
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
     "start": "live-server",
-    "seeding": "mysql -u student -p < schema.sql"
+    "seeding": "mysql -u student -pstudent < schema.sql"
   },
   "dependencies": {
     "axios": "^0.19.2",

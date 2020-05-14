@@ -25,13 +25,13 @@ class App extends React.Component {
     }
 
     getImages() {
-        axios.get('http://localhost:3000/images')
+        axios.get('/images')
         .then(res => this.setState({images: res.data}))
         .catch(this.handleError)
     }
 
     getUsers() {
-        axios.get('http://localhost:/users')
+        axios.get('/users')
         .then(res => this.setState({users: res.data}))
         .catch(this.handleError)
     }

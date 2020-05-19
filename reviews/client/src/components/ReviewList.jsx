@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReviewItem from './ReviewItem.jsx';
-import Pagination from './Pagination.jsx';
 
 import styled from 'styled-components';
 
@@ -42,16 +41,6 @@ const ReviewList = (props) => {
           })
         }
       </UnorderedList>
-
-      {/* <span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="icon_svg"><path d="M14.25 17.58a1 1 0 0 1-.71-.3L9 12.7a1 1 0 0 1 0-1.4l4.5-4.58A1 1 0 0 1 15 6.7a1 1 0 0 1 0 1.42L11.15 12 15 15.88a1 1 0 0 1 0 1.42 1 1 0 0 1-.75.28z"></path></svg>
-      {
-        pagesArr.map((pageNum) => {
-          return <Pagination pageNum={pageNum}/>
-        })
-      }
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="icon_svg"><path d="M9.75 17.58a1 1 0 0 1-.7-.28 1 1 0 0 1 0-1.42l3.8-3.88L9 8.12a1 1 0 1 1 1.41-1.42L15 11.3a1 1 0 0 1 0 1.4l-4.5 4.58a1 1 0 0 1-.75.3z"></path></svg>
-      </span> */}
     </div>
 )}
 

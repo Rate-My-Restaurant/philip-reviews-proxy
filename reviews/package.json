@@ -13,7 +13,7 @@
     "test:coverage": "jest --coverage --colors --watchAll=false",
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
-    "react-prod": "webpack -p",
+    "react-prod": "webpack -p --watch",
     "start": "live-server",
     "seeding": "mysql -u student -pstudent < schema.sql"
   },

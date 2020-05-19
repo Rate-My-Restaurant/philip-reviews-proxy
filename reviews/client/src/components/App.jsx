@@ -70,6 +70,7 @@ class App extends React.Component {
     this.state = {
       reviews: [],
       searchedReviews: [],
+      searchingTerm: '',
       searchedTerm: '',
       sortValue: 'newest first',
     };
@@ -82,7 +83,7 @@ class App extends React.Component {
   }
 
     componentDidMount() {
-      axios.get('http://localhost:3003/reviews/restaurants/2')
+      axios.get('http://18.144.141.243:3003/reviews/restaurants/2')
         .then(res => {
           console.log('GET review request successful:', res.data)
           let allreviews = res.data;
@@ -95,9 +96,9 @@ class App extends React.Component {
     };
 
     handleSubmit() {
-      let searchedWord = this.state.searchedTerm;
+      let searchedWord = this.state.searchingTerm;
       console.log(searchedWord)
-      axios.get(`http://localhost:3003/reviews/restaurants/2?q=${searchedWord}`)
+      axios.get(`http://18.144.141.243:3003/reviews/restaurants/2?q=${searchedWord}`)
         .then(res => {
           console.log(res);
           this.setState({
@@ -111,12 +112,13 @@ class App extends React.Component {
     }
 
     handleChange(event) {
-      this.setState({searchedTerm: event.target.value})
+      let value = event.target.value;
+      this.setState({searchingTerm: value})
     }
 
     handleChangeSort(event) {
       const value = event.target.value;
-      axios.get(`http://localhost:3003/reviews/restaurants/2?sort_by=${value}`)
+      axios.get(`http://18.144.141.243:3003/reviews/restaurants/2?sort_by=${value}`)
         .then(res => {
           this.setState({
             reviews: res.data,
@@ -130,13 +132,15 @@ class App extends React.Component {
     }
 
     handleSubmitClear() {
-      axios.get('http://localhost:3003/reviews/restaurants/2')
+      axios.get('http://18.144.141.243:3003/reviews/restaurants/2')
         .then(res => {
           let allreviews = res.data;
           allreviews.sort((a, b) => Date.parse(b.uploadDate) - Date.parse(a.uploadDate))
           this.setState({
-            searchedReviews: allreviews,
-            searchedTerm: ''
+            reviews: allreviews,
+            searchedReviews: [],
+            searchedTerm: '',
+            searchingTerm: '',
           });
          })
         .catch(error => {
@@ -145,9 +149,9 @@ class App extends React.Component {
     }
 
     buttonSubmit(emoji, reviewID) {
-      axios.post('http://localhost:3003/reviews/emoji', { emoji, reviewID })
+      axios.post('http://18.144.141.243:3003/reviews/emoji', { emoji, reviewID })
         .then(res => {
-          axios.get('http://localhost:3003/reviews/restaurants/2')
+          axios.get('http://18.144.141.243:3003/reviews/restaurants/2')
           .then(res => {
             let allreviews = res.data;
             allreviews.sort((a, b) => Date.parse(b.uploadDate) - Date.parse(a.uploadDate))
@@ -160,8 +164,6 @@ class App extends React.Component {
         .catch(error => console.log(error))
     }
 
-
-
   render() {
     return (
       <div>
@@ -171,8 +173,8 @@ class App extends React.Component {
             <RecommendedText>Recommended Reviews</RecommendedText>
           </RecommendedDiv>
         </Recommended>
-        <SearchReview handleSubmit={this.handleSubmit} searchedTerm={this.state.searchedTerm} handleChange={this.handleChange} sortValue={this.state.sortValue} handleChangeSort={this.handleChangeSort} searchedReviews={this.state.searchedReviews} handleSubmitClear={this.handleSubmitClear}/>
-        <ReviewList allReviews={this.state.searchedTerm.length > 0 ? this.state.searchedReviews : this.state.reviews} numReviewsPics={this.state.userPicReviews}  buttonSubmit={this.buttonSubmit}/>
+        <SearchReview handleSubmit={this.handleSubmit} searchedTerm={this.state.searchedTerm} handleChange={this.handleChange} sortValue={this.state.sortValue} handleChangeSort={this.handleChangeSort} searchedReviews={this.state.searchedReviews} handleSubmitClear={this.handleSubmitClear} searchingTerm={this.state.searchingTerm}/>
+        <ReviewList allReviews={this.state.searchedReviews.length > 0 ? this.state.searchedReviews : this.state.reviews} numReviewsPics={this.state.userPicReviews}  buttonSubmit={this.buttonSubmit}/>
       </ReviewPage>
       </div>
     )

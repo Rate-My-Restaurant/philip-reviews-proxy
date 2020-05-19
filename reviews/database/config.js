@@ -1,6 +1,6 @@
 module.exports = {
-  host: 'localhost',
-  user: 'student',
-  password: 'student',
+  host: '18.144.141.243',
+  user: 'root',
+  password: 'billmin0412',
   database: 'yelpreviews',
 }

@@ -14,7 +14,7 @@ COPY . /src/app
 RUN npm install
 
 # What port will the container talk to the outside world with once created?
-Expose 3030
+EXPOSE 3003
 
 # How do you start your app?
 CMD [ "npm", "run", "server-dev"]
